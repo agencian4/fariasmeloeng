@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farias de Melo Engenharia — Proposta de evolução da marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#121212;--g2:#2a2a28;--concrete:#e9e6df;--paper:#f4f2ed;--c2:#dcd8cf;--ox:#b8501e;--ox2:#d9692f;--ld:rgba(233,230,223,.16);--ll:rgba(18,18,18,.14);--md:rgba(233,230,223,.62);--ml:rgba(18,18,18,.6);--pad:clamp(20px,4.2vw,64px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Archivo",system-ui,sans-serif;background:var(--paper);color:var(--ink);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--pad)}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+.k{display:flex;align-items:center;gap:14px;color:var(--ox);margin-bottom:26px}
+.k::before{content:"";width:28px;height:1px;background:currentColor}
+.dark{background:var(--ink);color:var(--concrete)} .dark .k{color:var(--ox2)}
+h1,h2{font-weight:620;letter-spacing:-.035em;line-height:1}
+h2{font-size:clamp(34px,4.4vw,64px)}
+.sec{padding:clamp(80px,10vw,150px) 0}
+.muted{color:var(--ml)} .dark .muted{color:var(--md)}
+.lead{font-size:clamp(18px,1.5vw,21px);max-width:640px;margin-top:22px}
+
+/* cover */
+.cover{min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;padding:36px 0 40px;background:var(--ink);color:var(--concrete);position:relative;overflow:hidden}
+.cover .grid{position:absolute;inset:0;background-image:linear-gradient(var(--ld) 1px,transparent 1px),linear-gradient(90deg,var(--ld) 1px,transparent 1px);background-size:56px 56px;opacity:.4;mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 70%)}
+.cover header,.cover footer{position:relative;display:flex;justify-content:space-between;color:var(--md)}
+.cover .center{position:relative;display:grid;place-items:center;gap:40px;text-align:center}
+.cover .center svg{width:min(340px,60vw);height:auto}
+.cover h1{font-size:clamp(34px,4.6vw,64px)}
+.cover p{color:var(--md);margin-top:14px}
+
+/* compare */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ll);border:1px solid var(--ll);margin-top:60px}
+.vs > div{background:var(--paper);padding:34px}
+.vs .stage{aspect-ratio:4/3;display:grid;place-items:center;margin:24px 0 26px}
+.vs .old .stage{background:#8f8f8f}
+.vs .new .stage{background:var(--ink)}
+.vs h3{font-size:24px;font-weight:620;letter-spacing:-.02em}
+.vs ul{list-style:none;margin-top:16px}
+.vs li{padding:12px 0;border-top:1px solid var(--ll);font-size:15.5px;display:grid;grid-template-columns:22px 1fr;gap:8px}
+.vs li b{font-weight:600}
+.tagline{display:flex;justify-content:space-between;align-items:baseline}
+.pill{font-family:"IBM Plex Mono",monospace;font-size:11.5px;padding:5px 9px;border:1px solid var(--ll)}
+.new .pill{background:var(--ox);color:#fff;border-color:var(--ox)}
+.note{margin-top:14px;color:var(--ml)}
+
+/* concept */
+.concept{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,90px);align-items:center}
+.anat{background:var(--g2);aspect-ratio:1/1;position:relative}
+.anat svg{width:100%;height:100%}
+.anat text{font-family:"IBM Plex Mono",monospace;font-size:5px;fill:var(--md)}
+.anat .ox{fill:var(--ox2)}
+.pts{margin-top:34px;border-top:1px solid var(--ld)}
+.pts > div{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:20px 0;border-bottom:1px solid var(--ld)}
+.pts span{color:var(--ox2)}
+.pts h4{font-size:19px;font-weight:600;letter-spacing:-.01em}
+.pts p{color:var(--md);font-size:15.5px;margin-top:4px}
+
+/* reduction */
+.red{margin-top:56px;border-top:1px solid var(--ll)}
+.red .row{display:grid;grid-template-columns:160px repeat(4,1fr);align-items:center;border-bottom:1px solid var(--ll);padding:22px 0}
+.red .row > div{display:flex;align-items:center;justify-content:center;min-height:100px}
+.red .row > div:first-child{justify-content:flex-start}
+.red .hd{padding:14px 0;color:var(--ml)}
+.red .hd > div{min-height:0}
+
+/* lockups */
+.lock{display:grid;grid-template-columns:1.4fr 1fr;gap:2px;background:var(--ll);margin-top:56px;border:1px solid var(--ll)}
+.lock > div{background:var(--paper);padding:56px 40px;display:grid;place-items:center;min-height:300px;position:relative}
+.lock > div.d{background:var(--ink)}
+.lock > div.o{background:var(--ox)}
+.lock .cap{position:absolute;left:18px;bottom:14px;color:var(--ml)}
+.lock .d .cap,.lock .o .cap{color:rgba(233,230,223,.6)}
+.lock svg{max-width:100%;height:auto}
+
+/* palette & type */
+.pal{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:56px}
+.sw{aspect-ratio:1/1.1;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.sw b{font-size:20px;font-weight:620;letter-spacing:-.02em}
+.sw p{font-size:14px;opacity:.75;margin-top:6px}
+.type{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ll);margin-top:2px}
+.type > div{background:var(--paper);padding:34px}
+.type .big{font-size:84px;font-weight:620;letter-spacing:-.04em;line-height:1;margin:14px 0}
+.type .bigm{font-family:"IBM Plex Mono",monospace;font-size:46px;line-height:1.1;margin:14px 0}
+
+/* applications */
+.apps{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;margin-top:56px}
+.app{background:var(--g2);position:relative;overflow:hidden;display:grid;place-items:center}
+.app .cap{position:absolute;left:16px;bottom:12px;color:var(--md)}
+.a1{grid-column:span 2;aspect-ratio:1/1}
+.a2{grid-column:span 4;aspect-ratio:2/1}
+.a3{grid-column:span 3;aspect-ratio:4/3}
+.a4{grid-column:span 3;aspect-ratio:4/3}
+
+.verdict{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.verdict ol{list-style:none;counter-reset:v}
+.verdict li{counter-increment:v;display:grid;grid-template-columns:44px 1fr;padding:18px 0;border-top:1px solid var(--ld)}
+.verdict li::before{content:"0" counter(v);font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ox2);padding-top:4px}
+.verdict li p{color:var(--md);font-size:15.5px;margin-top:4px}
+.verdict li h4{font-size:19px;font-weight:600}
+
+@media (max-width:900px){
+  .vs,.concept,.lock,.type,.verdict{grid-template-columns:1fr}
+  .pal{grid-template-columns:1fr 1fr}
+  .red .row{grid-template-columns:90px repeat(4,1fr)}
+  .apps{grid-template-columns:1fr}
+  .a1,.a2,.a3,.a4{grid-column:auto}
+  .type .big{font-size:60px}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG symbols -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="fm" viewBox="0 0 140 100">
+      <rect x="0" y="0" width="14" height="100"/><rect x="18" y="0" width="32" height="14"/><rect x="18" y="40" width="22" height="14"/>
+      <rect x="54" y="0" width="14" height="100"/><rect x="126" y="0" width="14" height="100"/>
+      <polygon class="v" style="fill:var(--acc,currentColor)" points="68,0 82,0 97,30 112,0 126,0 97,64"/>
+    </symbol>
+    <symbol id="old" viewBox="-8 -8 116 116">
+      <polygon points="2,30 50,10 70,22 50,50 22,38 22,58 34,58 34,64 22,66 22,96 2,90"/>
+      <polygon points="54,56 78,26 98,34 98,96 80,98 80,52 62,70 54,64"/>
+      <polygon points="56,8 74,0 98,12 98,28 80,18"/>
+    </symbol>
+  </defs>
+</svg>
+<style>
+.m-ink{fill:var(--ink);--acc:var(--ox)}
+.m-lt{fill:var(--concrete);--acc:var(--ox2)}
+.m-mono-l{fill:var(--concrete);--acc:var(--concrete)} .m-mono-d{fill:var(--ink);--acc:var(--ink)} .m-white{fill:#fff;--acc:#fff}
+</style>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="grid"></div>
+  <div class="wrap" style="width:100%"><header class="mono"><span>Proposta de evolução de marca</span><span>Agência N4 · nov/2026</span></header></div>
+  <div class="center">
+    <svg class="m-lt" viewBox="0 0 140 100"><use href="#fm"/></svg>
+    <div><h1>Farias de Melo Engenharia</h1><p>Da marca atual para um sistema de identidade à altura das obras que a empresa entrega.</p></div>
+  </div>
+  <div class="wrap" style="width:100%"><footer class="mono"><span>Monograma · Assinatura · Cores · Aplicações</span><span>Role ↓</span></footer></div>
+</section>
+
+<!-- DIAGNÓSTICO / COMPARAÇÃO -->
+<section class="sec">
+  <div class="wrap">
+    <h2>Mantemos a ideia. Trocamos a execução.</h2>
+    <p class="lead muted">A marca atual tem um bom conceito: o F e o M fundidos num volume construído. O problema não é a ideia, é como ela foi desenhada. A proposta preserva o monograma e a sobriedade monocromática, mas reconstrói tudo com lógica de engenharia.</p>
+
+    <div class="vs">
+      <div class="old">
+        <div class="tagline"><h3>Marca atual</h3><span class="pill">Isométrica · 3D</span></div>
+        <div class="stage">
+          <div style="display:grid;place-items:center;gap:18px">
+            <img src="img/logo-antigo.png" alt="Símbolo atual da Farias de Melo" style="width:220px;height:auto;image-rendering:auto">
+            <div style="text-align:center;color:#fff;font-family:Arial,Helvetica,sans-serif;font-weight:700;line-height:1.15">FARIAS DE MELO<br><span style="font-size:12px">SERVIÇOS DE ENGENHARIA</span></div>
+          </div>
+        </div>
+        <ul>
+          <li><span>–</span><span><b>O F se perde.</b> Ele existe só como recorte dentro do bloco. À primeira vista, a maioria lê um "M" ou um cubo.</span></li>
+          <li><span>–</span><span><b>Não sobrevive à redução.</b> A perspectiva e os recortes viram mancha no avatar, no bordado da farda e no capacete.</span></li>
+          <li><span>–</span><span><b>Estética de clip-art 3D,</b> comum a centenas de construtoras. Não diferencia.</span></li>
+          <li><span>–</span><span><b>Tipografia genérica,</b> sem relação com o símbolo e sem personalidade.</span></li>
+          <li><span>–</span><span><b>Sem sistema:</b> não há cor de marca, versões ou regras de uso. O arquivo usado nos posts aparece serrilhado.</span></li>
+        </ul>
+        <p class="note mono">Símbolo atual extraído dos posts da empresa, no tamanho e qualidade em que circula hoje.</p>
+      </div>
+      <div class="new">
+        <div class="tagline"><h3>Proposta</h3><span class="pill">Peças · Juntas · Carga</span></div>
+        <div class="stage">
+          <div style="display:grid;place-items:center;gap:22px">
+            <svg class="m-lt" width="230" height="164" viewBox="0 0 140 100"><use href="#fm"/></svg>
+            <div style="text-align:center;color:var(--concrete);line-height:1.1"><div style="font-weight:700;font-size:20px;letter-spacing:.14em;font-variation-settings:'wdth' 112">FARIAS DE MELO</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.32em;margin-top:8px;color:var(--md)">ENGENHARIA</div></div>
+          </div>
+        </div>
+        <ul>
+          <li><span style="color:var(--ox)">+</span><span><b>F e M legíveis de imediato,</b> lado a lado e unidos pelo mesmo pilar de construção.</span></li>
+          <li><span style="color:var(--ox)">+</span><span><b>Funciona em 16 px:</b> só retângulos e uma cunha, sem perspectiva nem detalhe fino.</span></li>
+          <li><span style="color:var(--ox)">+</span><span><b>Desenhada como estrutura:</b> pilares, vigas e juntas. O símbolo conta o que a empresa faz.</span></li>
+          <li><span style="color:var(--ox)">+</span><span><b>Assinatura própria,</b> com tipografia larga e firme, coerente com o traço do símbolo.</span></li>
+          <li><span style="color:var(--ox)">+</span><span><b>Sistema completo:</b> cor de destaque, versões claro, escuro e monocromática, e regras simples de uso.</span></li>
+        </ul>
+        <p class="note mono">Mantém da marca atual: monograma FM, monocromia, ideia de construção.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEITO -->
+<section class="sec dark">
+  <div class="wrap concept">
+    <div class="anat">
+      <svg viewBox="-20 -24 180 160">
+        <defs><pattern id="g" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M7 0H0V7" fill="none" stroke="rgba(233,230,223,.08)" stroke-width=".4"/></pattern></defs>
+        <rect x="-20" y="-24" width="180" height="160" fill="url(#g)"/>
+        <g fill="none" stroke="rgba(233,230,223,.28)" stroke-width=".35" stroke-dasharray="1.5 1.5">
+          <line x1="0" y1="-14" x2="0" y2="114"/><line x1="14" y1="-14" x2="14" y2="114"/>
+          <line x1="54" y1="-14" x2="54" y2="114"/><line x1="68" y1="-14" x2="68" y2="114"/>
+          <line x1="126" y1="-14" x2="126" y2="114"/><line x1="140" y1="-14" x2="140" y2="114"/>
+          <line x1="-10" y1="0" x2="150" y2="0"/><line x1="-10" y1="100" x2="150" y2="100"/>
+        </g>
+        <g class="m-lt"><use href="#fm" x="0" y="0" width="140" height="100"/></g>
+        <g stroke="#d9692f" stroke-width=".5" fill="none">
+          <path d="M0 -10H14M0 -12v4M14 -12v4"/>
+          <path d="M14 -18H18M14 -20v4M18 -20v4"/>
+          <path d="M146 0V100M144 0h4M144 100h4"/>
+        </g>
+        <text x="2" y="-14" class="ox">t = 14</text>
+        <text x="22" y="-22" class="ox">junta 4</text>
+        <text x="148" y="52" class="ox">100</text>
+        <text x="0" y="122">pilar</text><text x="54" y="122">pilar</text><text x="126" y="122">pilar</text>
+        <text x="20" y="22">viga</text><text x="20" y="62">viga</text>
+        <text x="84" y="70" class="ox">caminho da carga</text>
+      </svg>
+    </div>
+    <div>
+      <h2>Uma marca desenhada como se calcula uma estrutura.</h2>
+      <div class="pts">
+        <div><span class="mono">01</span><div><h4>Peças com espessura única</h4><p>Todos os elementos têm a mesma espessura, como peças padronizadas de concreto. Isso dá rigor e coerência ao desenho.</p></div></div>
+        <div><span class="mono">02</span><div><h4>Juntas visíveis</h4><p>As vigas do F não tocam o pilar: deixam uma junta, como numa estrutura real. É o detalhe que torna a marca precisa e reconhecível.</p></div></div>
+        <div><span class="mono">03</span><div><h4>O V é a carga</h4><p>No centro do M, a cunha em cor de óxido mostra a carga descendo até os pilares. Também lembra o "visto" de obra aprovada.</p></div></div>
+        <div><span class="mono">04</span><div><h4>Grade de 14 unidades</h4><p>O símbolo inteiro é construído sobre um módulo. Reproduzir, ampliar, bordar ou recortar em adesivo fica simples e sempre fiel.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REDUÇÃO -->
+<section class="sec">
+  <div class="wrap">
+    <h2>Onde uma marca de obra realmente aparece.</h2>
+    <p class="lead muted">Avatar do Instagram, bordado na farda, adesivo no capacete, rodapé de orçamento. Nesses tamanhos se decide se a marca é lembrada ou ignorada.</p>
+    <div class="red">
+      <div class="row hd mono"><div></div><div>96 px</div><div>48 px</div><div>24 px</div><div>16 px</div></div>
+      <div class="row">
+        <div class="mono muted">Atual</div>
+        <div><img src="img/logo-antigo.png" alt="" style="width:96px;height:96px;object-fit:cover;border-radius:50%"></div><div><img src="img/logo-antigo.png" alt="" style="width:48px;height:48px;object-fit:cover;border-radius:50%"></div><div><img src="img/logo-antigo.png" alt="" style="width:24px;height:24px;object-fit:cover;border-radius:50%"></div><div><img src="img/logo-antigo.png" alt="" style="width:16px;height:16px;object-fit:cover;border-radius:50%"></div>
+      </div>
+      <div class="row">
+        <div class="mono" style="color:var(--ox)">Proposta</div>
+        <div><svg width="96" height="96"><circle cx="48" cy="48" r="48" fill="#121212"/><svg class="m-lt" x="20" y="28" width="56" height="40" viewBox="0 0 140 100"><use href="#fm"/></svg></svg></div>
+        <div><svg width="48" height="48"><circle cx="24" cy="24" r="24" fill="#121212"/><svg class="m-lt" x="10" y="14" width="28" height="20" viewBox="0 0 140 100"><use href="#fm"/></svg></svg></div>
+        <div><svg width="24" height="24"><circle cx="12" cy="12" r="12" fill="#121212"/><svg class="m-lt" x="5" y="7" width="14" height="10" viewBox="0 0 140 100"><use href="#fm"/></svg></svg></div>
+        <div><svg width="16" height="16"><circle cx="8" cy="8" r="8" fill="#121212"/><svg class="m-lt" x="3" y="4.5" width="10" height="7.2" viewBox="0 0 140 100"><use href="#fm"/></svg></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSINATURAS -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <h2>Versões para cada superfície.</h2>
+    <div class="lock">
+      <div>
+        <svg width="520" height="110" viewBox="0 0 520 110">
+          <svg class="m-ink" x="0" y="15" width="112" height="80" viewBox="0 0 140 100"><use href="#fm"/></svg>
+          <line x1="140" y1="15" x2="140" y2="95" stroke="rgba(18,18,18,.18)"/>
+          <text x="166" y="58" font-family="Archivo" font-weight="700" font-size="34" letter-spacing="4.5" style="font-variation-settings:'wdth' 112">FARIAS DE MELO</text>
+          <text x="168" y="88" font-family="IBM Plex Mono" font-size="14" letter-spacing="8" fill="rgba(18,18,18,.6)">ENGENHARIA</text>
+        </svg>
+        <span class="cap mono">Horizontal · principal</span>
+      </div>
+      <div class="d">
+        <svg width="240" height="230" viewBox="0 0 240 230">
+          <svg class="m-lt" x="50" y="0" width="140" height="100" viewBox="0 0 140 100"><use href="#fm"/></svg>
+          <text x="120" y="168" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="24" letter-spacing="3.4" fill="#e9e6df" style="font-variation-settings:'wdth' 112">FARIAS DE MELO</text>
+          <text x="120" y="198" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="6" fill="rgba(233,230,223,.6)">ENGENHARIA</text>
+        </svg>
+        <span class="cap mono">Vertical · fundo escuro</span>
+      </div>
+      <div class="o">
+        <svg class="m-white" width="200" height="143" viewBox="0 0 140 100"><use href="#fm"/></svg>
+        <span class="cap mono">Monocromática · sobre óxido</span>
+      </div>
+      <div>
+        <svg class="m-mono-d" width="200" height="143" viewBox="0 0 140 100"><use href="#fm"/></svg>
+        <span class="cap mono">Monocromática · bordado, carimbo, adesivo de recorte</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COR E TIPO -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <h2>Materiais de obra viram paleta.</h2>
+    <p class="lead muted">Nada de azul corporativo genérico. As cores vêm do próprio canteiro: o grafite do aço, o cinza do concreto e o óxido do vergalhão.</p>
+    <div class="pal">
+      <div class="sw" style="background:#121212;color:#e9e6df"><span class="mono">#121212</span><div><b>Grafite</b><p>Base. Textos e fundos principais.</p></div></div>
+      <div class="sw" style="background:#e9e6df;color:#121212;box-shadow:inset 0 0 0 1px rgba(18,18,18,.1)"><span class="mono">#E9E6DF</span><div><b>Concreto</b><p>Fundo claro. Respiro e sobriedade.</p></div></div>
+      <div class="sw" style="background:#b8501e;color:#fff"><span class="mono">#B8501E</span><div><b>Óxido</b><p>Destaque. Uso pontual: o V e as chamadas.</p></div></div>
+      <div class="sw" style="background:#2a2a28;color:#e9e6df"><span class="mono">#2A2A28</span><div><b>Aço</b><p>Apoio. Superfícies e uniformes.</p></div></div>
+    </div>
+    <div class="type">
+      <div><span class="mono muted">Principal</span><div class="big">Archivo</div><p class="muted">Sem serifa de largura variável. Firme e técnica nos títulos e expandida na assinatura.</p></div>
+      <div><span class="mono muted">Técnica</span><div class="bigm">IBM Plex Mono</div><p class="muted">Para cotas, legendas, números de orçamento e dados de obra. É a voz do projeto.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- APLICAÇÕES -->
+<section class="sec dark">
+  <div class="wrap">
+    <h2>A marca no canteiro.</h2>
+    <div class="apps">
+      <div class="app a1">
+        <svg width="220" height="220" viewBox="0 0 220 220"><circle cx="110" cy="110" r="100" fill="#121212"/><circle cx="110" cy="110" r="104" fill="none" stroke="#b8501e" stroke-width="3"/><svg class="m-lt" x="58" y="73" width="104" height="74" viewBox="0 0 140 100"><use href="#fm"/></svg></svg>
+        <span class="cap mono">Avatar Instagram</span>
+      </div>
+      <div class="app a2">
+        <svg width="92%" viewBox="0 0 600 300">
+          <rect x="40" y="20" width="520" height="240" fill="#e9e6df"/>
+          <rect x="40" y="20" width="520" height="72" fill="#121212"/>
+          <svg class="m-lt" x="62" y="36" width="56" height="40" viewBox="0 0 140 100"><use href="#fm"/></svg>
+          <text x="134" y="62" font-family="Archivo" font-weight="700" font-size="20" letter-spacing="3" fill="#e9e6df">FARIAS DE MELO</text>
+          <text x="134" y="80" font-family="IBM Plex Mono" font-size="10" letter-spacing="5" fill="rgba(233,230,223,.6)">ENGENHARIA</text>
+          <text x="62" y="124" font-family="IBM Plex Mono" font-size="11" fill="#b8501e">Obra</text>
+          <text x="62" y="148" font-family="Archivo" font-weight="620" font-size="22" fill="#121212">Reforma e ampliação comercial</text>
+          <line x1="62" y1="166" x2="538" y2="166" stroke="rgba(18,18,18,.15)"/>
+          <text x="62" y="190" font-family="IBM Plex Mono" font-size="11" fill="rgba(18,18,18,.6)">Responsável técnico</text>
+          <text x="62" y="212" font-family="Archivo" font-weight="600" font-size="17" fill="#121212">Eng. civil João Melo</text>
+          <text x="62" y="232" font-family="IBM Plex Mono" font-size="11" fill="rgba(18,18,18,.6)">CREA-PE nº 000000</text>
+          <text x="330" y="190" font-family="IBM Plex Mono" font-size="11" fill="rgba(18,18,18,.6)">Contato</text>
+          <text x="330" y="212" font-family="Archivo" font-weight="600" font-size="17" fill="#121212">(81) 98815-2587</text>
+          <rect x="40" y="252" width="520" height="8" fill="#b8501e"/>
+          <rect x="120" y="260" width="10" height="40" fill="#555"/><rect x="470" y="260" width="10" height="40" fill="#555"/>
+        </svg>
+        <span class="cap mono">Placa de obra (obrigatória pelo CREA)</span>
+      </div>
+      <div class="app a3">
+        <svg width="70%" viewBox="0 0 300 260">
+          <path d="M90 20l-60 30 20 60 30-10v140h140V100l30 10 20-60-60-30c-10 20-30 30-60 30s-50-10-60-30z" fill="#2f3a2f"/>
+          <path d="M90 20c10 20 30 30 60 30s50-10 60-30" fill="none" stroke="#243024" stroke-width="6"/>
+          <svg class="m-lt" x="168" y="84" width="34" height="24" viewBox="0 0 140 100"><use href="#fm"/></svg>
+          <svg class="m-lt" x="108" y="150" width="84" height="60" viewBox="0 0 140 100"><use href="#fm"/></svg>
+        </svg>
+        <span class="cap mono">Farda da equipe · bordado no peito</span>
+      </div>
+      <div class="app a4">
+        <svg width="70%" viewBox="0 0 300 220">
+          <path d="M40 160c0-70 50-120 110-120s110 50 110 120z" fill="#e9e6df"/>
+          <rect x="20" y="158" width="260" height="18" rx="9" fill="#d6d1c6"/>
+          <path d="M140 42h20v40h-20z" fill="#d6d1c6"/>
+          <svg class="m-ink" x="110" y="104" width="80" height="57" viewBox="0 0 140 100"><use href="#fm"/></svg>
+        </svg>
+        <span class="cap mono">Capacete · adesivo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEFESA -->
+<section class="sec dark" style="padding-top:0">
+  <div class="wrap verdict">
+    <div>
+      <h2>Uma marca que acompanha o tamanho das obras.</h2>
+      <p class="lead muted">A Farias de Melo já faz obra para rede nacional de farmácias em outro estado. A marca ainda tem cara de começo. A evolução fecha essa distância sem apagar a história: quem conhece o FM antigo reconhece o novo.</p>
+    </div>
+    <ol>
+      <li><div><h4>Continuidade</h4><p>Monograma FM, monocromia e ideia de construção ficam. Não é uma ruptura, é uma evolução.</p></div></li>
+      <li><div><h4>Percepção de valor</h4><p>Desenho preciso transmite obra precisa. Isso pesa em orçamento de cliente comercial e corporativo.</p></div></li>
+      <li><div><h4>Custo de aplicação menor</h4><p>Formas chapadas e uma cor de destaque: barato de bordar, plotar, recortar e imprimir.</p></div></li>
+      <li><div><h4>Pronta para crescer</h4><p>Site, Instagram, placas, fardas e propostas passam a falar a mesma língua visual.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+</body>
+</html>

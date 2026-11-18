@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farias de Melo Engenharia — Construção e reforma com engenheiro na obra</title>
+<meta name="description" content="Construção, reforma e ampliação residencial e comercial em Pernambuco e na Bahia, com responsabilidade técnica do engenheiro civil João Melo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#121212;--steel:#1c1c1b;--concrete:#e9e6df;--paper:#f4f2ed;--c2:#dcd8cf;
+  --ld:rgba(233,230,223,.14);--ll:rgba(18,18,18,.13);--md:rgba(233,230,223,.64);--ml:rgba(18,18,18,.6);
+  --ox:#b8501e;--ox2:#d9692f;
+  --pad:clamp(20px,4.2vw,64px);--max:1360px;
+  --sans:"Archivo",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--ink);color:var(--concrete);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.mono{font-family:var(--mono);font-size:12.5px}
+h1,h2,h3{font-weight:620;letter-spacing:-.035em;line-height:1}
+h2{font-size:clamp(38px,5vw,78px)}
+.ox{color:var(--ox2)}
+.light{background:var(--paper);color:var(--ink)}
+.light .muted{color:var(--ml)} .muted{color:var(--md)}
+.sec{padding:clamp(100px,13vw,190px) 0;position:relative}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto;z-index:60;transition:background .5s,border-color .5s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(18,18,18,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--ld)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand svg{width:42px;height:30px;fill:var(--concrete);--acc:var(--ox2)}
+.brand b{display:block;font-size:14px;font-weight:700;letter-spacing:.14em;font-variation-settings:"wdth" 112;line-height:1}
+.brand small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--md);margin-top:5px}
+.nav ul{display:flex;gap:32px;list-style:none;font-size:14.5px;color:var(--md)}
+.nav ul a{transition:color .25s} .nav ul a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:15px;padding:16px 24px;transition:background .35s,color .35s,border-color .35s}
+.btn svg{width:16px;height:16px;transition:transform .35s var(--ease)} .btn:hover svg{transform:translateX(4px)}
+.btn-ox{background:var(--ox);color:#fff} .btn-ox:hover{background:var(--ox2)}
+.btn-line{border:1px solid rgba(255,255,255,.35);color:#fff} .btn-line:hover{border-color:#fff}
+.nav .btn{padding:11px 18px;font-size:14px}
+
+/* HERO — sticky, next section slides over it */
+.hero-shell{position:relative;height:100svh}
+.hero{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-media{position:absolute;inset:0;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:30% 60%;transform:scale(1.12);filter:saturate(.7) contrast(1.05)}
+.hero-media::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(18,18,18,.55) 0%,rgba(18,18,18,.15) 35%,rgba(18,18,18,.55) 62%,rgba(18,18,18,.95) 100%),
+  linear-gradient(90deg,rgba(18,18,18,.65),transparent 65%)}
+.hero-dim{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none}
+.hero-content{position:relative;width:100%;padding-bottom:clamp(40px,6vh,72px)}
+.hero h1{font-size:clamp(50px,8.4vw,142px);font-variation-settings:"wdth" 94;max-width:12ch;color:#fff}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
+.hero h1 .ln > span{display:inline-block}
+.hero-row{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:38px}
+.hero-row p{max-width:500px;font-size:clamp(17px,1.35vw,20px);color:rgba(255,255,255,.8)}
+.hero-row p b{color:#fff;font-weight:600}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-meta{position:relative;border-top:1px solid rgba(255,255,255,.16)}
+.hero-meta .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:20px;padding-bottom:24px;color:rgba(255,255,255,.55)}
+.hero-meta b{display:block;color:#fff;font-family:var(--sans);font-weight:600;font-size:15px;margin-top:4px}
+
+/* ABOUT — slides over hero */
+.about{position:relative;z-index:2;background:var(--paper);color:var(--ink);box-shadow:0 -40px 80px rgba(0,0,0,.35)}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,7vw,120px);align-items:end}
+.about .statement{font-size:clamp(30px,3.7vw,58px);font-weight:540;letter-spacing:-.03em;line-height:1.08}
+.about .statement em{font-style:normal;color:var(--ox)}
+.about-side p{color:var(--ml);font-size:17.5px}
+.about-side p+p{margin-top:16px}
+.about-media{margin-top:clamp(70px,9vw,130px);position:relative;overflow:hidden;aspect-ratio:21/9}
+.about-media img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;object-position:50% 40%}
+.about-media figcaption{position:absolute;left:24px;bottom:20px;color:#fff;font-family:var(--mono);font-size:12.5px;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+
+/* AUDIENCE */
+.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,4vw,60px);margin-top:clamp(60px,7vw,100px)}
+.aud{border-top:1px solid var(--ll);padding-top:30px}
+.aud h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.025em;line-height:1.08}
+.aud p{color:var(--ml);margin-top:16px;font-size:16.5px}
+.aud .line{display:block;height:2px;width:0;background:var(--ox);margin-top:-31px;margin-bottom:29px}
+
+/* SERVICES with cursor image preview */
+.svc-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:70px}
+.svc-list{border-top:1px solid var(--ld)}
+.svc{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:baseline;padding:34px 0;border-bottom:1px solid var(--ld);position:relative}
+.svc h3{font-size:clamp(26px,3vw,46px);font-weight:540;letter-spacing:-.03em;line-height:1.05;transition:transform .6s var(--ease),color .4s;color:rgba(233,230,223,.88)}
+.svc p{color:var(--md);font-size:16px;max-width:460px;transition:color .4s}
+.svc-list:hover .svc h3{color:rgba(233,230,223,.35)}
+.svc-list .svc:hover h3{color:#fff;transform:translateX(14px)}
+.svc-list .svc:hover p{color:var(--concrete)}
+.peek{position:fixed;left:0;top:0;width:300px;aspect-ratio:4/3;pointer-events:none;z-index:40;overflow:hidden;opacity:0;transform:translate(-50%,-50%) scale(.85);transition:opacity .35s,transform .45s var(--ease)}
+.peek.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.peek img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
+.peek img.on{opacity:1}
+
+/* METHOD */
+.method{background:var(--concrete);color:var(--ink);overflow:hidden}
+.method-top{padding-top:clamp(100px,12vw,170px);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end}
+.method-pin{padding:80px 0 clamp(100px,12vw,170px)}
+.track{display:flex;gap:20px;padding-left:var(--pad);will-change:transform}
+.step{flex:0 0 min(420px,82vw);background:var(--paper);padding:36px 34px 40px;min-height:440px;display:flex;flex-direction:column}
+.step.photo{flex-basis:min(560px,86vw);padding:0;position:relative;overflow:hidden}
+.step.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.step:last-child{margin-right:var(--pad)}
+.step .n{font-size:110px;font-weight:300;letter-spacing:-.06em;line-height:.8;color:var(--c2);font-variation-settings:"wdth" 80}
+.step h3{margin-top:auto;font-size:28px;letter-spacing:-.02em;line-height:1.08}
+.step p{color:var(--ml);margin-top:14px;font-size:16px}
+.progress{height:2px;background:var(--ll);margin:0 var(--pad);margin-top:40px;max-width:calc(var(--max) - 2*var(--pad))}
+.progress i{display:block;height:2px;width:0;background:var(--ox)}
+
+/* WORKS */
+.works-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
+.feature{position:relative;height:210vh}
+.feature-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.feature-frame{position:relative;width:100%;height:100%;overflow:hidden;clip-path:inset(12% 18% 12% 18%)}
+.feature-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;transform:scale(1.18)}
+.feature-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(18,18,18,.85))}
+.feature-info{position:absolute;left:0;right:0;bottom:0;z-index:2;padding-bottom:clamp(36px,6vh,64px)}
+.feature-info .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:end}
+.feature-info h3{font-size:clamp(34px,4.6vw,72px);color:#fff}
+.feature-info p{color:rgba(255,255,255,.8);max-width:440px}
+.feature-info .tags{color:var(--ox2);margin-bottom:16px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);margin-top:clamp(90px,10vw,150px)}
+.pair figure:nth-child(2){margin-top:clamp(60px,10vw,160px)}
+.pic{position:relative;overflow:hidden;aspect-ratio:4/5}
+.pic img{position:absolute;inset:-10% 0;width:100%;height:120%;object-fit:cover}
+.pair figcaption{margin-top:22px}
+.pair figcaption h4{font-size:clamp(22px,2vw,30px);font-weight:600;letter-spacing:-.02em}
+.pair figcaption p{color:var(--md);margin-top:8px;max-width:440px;font-size:16px}
+.pair figcaption .mono{color:var(--ox2);display:block;margin-bottom:12px}
+
+/* ENGINEER */
+.eng{display:grid;grid-template-columns:5fr 7fr;gap:clamp(40px,7vw,120px);align-items:center}
+.portrait{position:relative;overflow:hidden;aspect-ratio:5/7}
+.portrait img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;object-position:60% 30%}
+.portrait .badge{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--concrete);padding:16px 20px}
+.portrait .badge b{display:block;font-family:var(--sans);font-size:15px;font-weight:600;margin-top:2px}
+.eng h2{font-size:clamp(46px,6vw,96px)}
+.eng .lead{font-size:clamp(19px,1.6vw,24px);line-height:1.42;margin-top:30px;letter-spacing:-.01em}
+.eng .body{margin-top:20px;color:var(--ml);max-width:600px}
+.creds{display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px;border-top:1px solid var(--ll)}
+.creds div{padding:20px 20px 0 0;color:var(--ml)}
+.creds div+div{padding-left:20px;border-left:1px solid var(--ll)}
+.creds b{display:block;color:var(--ink);font-family:var(--sans);font-size:17px;font-weight:620;margin-top:6px}
+.team{margin-top:clamp(90px,10vw,150px);display:grid;grid-template-columns:7fr 5fr;gap:clamp(30px,5vw,80px);align-items:center}
+.team .pic{aspect-ratio:16/8}
+.team .pic img{object-position:50% 50%}
+.team h3{font-size:clamp(28px,3vw,44px);letter-spacing:-.03em;line-height:1.05}
+.team p{color:var(--ml);margin-top:18px}
+
+/* PRINCIPLES */
+.prin-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ld);margin-top:70px}
+.prin{padding:34px 28px 0 0}
+.prin+.prin{padding-left:28px;border-left:1px solid var(--ld)}
+.prin h3{font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px}
+.prin p{color:var(--md);font-size:16px}
+.quote{margin-top:clamp(100px,11vw,160px);font-size:clamp(40px,6.6vw,108px);font-weight:600;letter-spacing:-.045em;line-height:.98}
+.quote .ln{display:block;overflow:hidden}
+.quote .ln > span{display:inline-block}
+
+/* CTA */
+.cta{position:relative;overflow:hidden;background:var(--ox);color:#fff}
+.cta-bg{position:absolute;inset:0;opacity:.14;mix-blend-mode:multiply}
+.cta-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.cta .wrap{position:relative;padding-top:clamp(110px,14vw,200px);padding-bottom:clamp(60px,7vw,100px)}
+.cta h2{font-size:clamp(50px,8.6vw,148px);letter-spacing:-.045em;line-height:.93;max-width:13ch}
+.cta-row{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:60px}
+.cta-row p{font-size:19px;max-width:480px;color:rgba(255,255,255,.88)}
+.btn-w{background:#fff;color:var(--ink);padding:20px 28px;font-size:16px}
+.btn-w:hover{background:var(--ink);color:#fff}
+.cta .tel{display:block;margin-top:16px;color:rgba(255,255,255,.85);font-size:14px}
+
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;padding-top:70px;padding-bottom:36px;color:var(--md);font-size:15px}
+footer h4{font-family:var(--mono);font-weight:400;font-size:12px;color:rgba(233,230,223,.4);margin-bottom:14px}
+footer a:hover{color:#fff}
+footer .legal{grid-column:1/-1;display:flex;justify-content:space-between;border-top:1px solid var(--ld);padding-top:24px;margin-top:30px}
+
+@media (max-width:1023px){
+  .nav ul,.nav .btn{display:none}
+  .hero-row,.about-grid,.svc-top,.method-top,.works-top,.feature-info .wrap,.eng,.team,.cta-row{grid-template-columns:1fr;gap:24px}
+  .hero-meta .wrap{grid-template-columns:1fr 1fr}
+  .aud-grid{grid-template-columns:1fr}
+  .svc{grid-template-columns:1fr;gap:10px}
+  .peek{display:none}
+  .track{flex-direction:column;padding:0 var(--pad);gap:14px}
+  .step{flex:auto;min-height:300px}.step.photo{aspect-ratio:4/3;min-height:0}
+  .step:last-child{margin-right:0}
+  .progress{display:none}
+  .feature{height:auto}
+  .feature-sticky{position:relative;height:80vh}
+  .pair{grid-template-columns:1fr}
+  .pair figure:nth-child(2){margin-top:0}
+  .portrait{max-width:440px}
+  .prin-grid{grid-template-columns:1fr 1fr}
+  .prin:nth-child(3){padding-left:0;border-left:0}
+  footer .wrap{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .hero h1{font-size:clamp(46px,13vw,64px)}
+  .about-media{aspect-ratio:4/3}
+  .creds{grid-template-columns:1fr}
+  .creds div+div{padding-left:0;border-left:0;border-top:1px solid var(--ll)}
+  .creds div{padding:16px 0}
+  .prin-grid{grid-template-columns:1fr}
+  .prin+.prin{padding-left:0;border-left:0;border-top:1px solid var(--ld)}
+  .prin{padding-bottom:28px}
+  footer .legal{flex-direction:column;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="fm" viewBox="0 0 140 100"><rect x="0" y="0" width="14" height="100"/><rect x="18" y="0" width="32" height="14"/><rect x="18" y="40" width="22" height="14"/><rect x="54" y="0" width="14" height="100"/><rect x="126" y="0" width="14" height="100"/><polygon class="v" style="fill:var(--acc,currentColor)" points="68,0 82,0 97,30 112,0 126,0 97,64"/></symbol>
+</defs></svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#topo" class="brand" aria-label="Farias de Melo Engenharia"><svg viewBox="0 0 140 100"><use href="#fm"/></svg><span><b>FARIAS DE MELO</b><small>ENGENHARIA</small></span></a>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#obras">Obras</a></li>
+      <li><a href="#engenheiro">O engenheiro</a></li>
+    </ul>
+    <a class="btn btn-ox" href="https://wa.me/5581988152587" target="_blank" rel="noopener">Solicitar visita técnica</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero-shell" id="topo">
+  <section class="hero">
+    <div class="hero-media"><img src="img/hero-ferragem.jpg" alt="Armadura de pilares em obra da Farias de Melo Engenharia"></div>
+    <div class="hero-dim"></div>
+    <div class="wrap hero-content">
+      <h1><span class="ln"><span>Engenharia</span></span><span class="ln"><span>que <span class="ox">sustenta</span></span></span><span class="ln"><span>o que você</span></span><span class="ln"><span>constrói.</span></span></h1>
+      <div class="hero-row">
+        <p>Construção, reforma e ampliação de imóveis residenciais e comerciais, <b>com o engenheiro civil João Melo à frente de cada obra</b>, da fundação à entrega.</p>
+        <div class="hero-cta">
+          <a class="btn btn-ox" href="https://wa.me/5581988152587" target="_blank" rel="noopener">Falar com o engenheiro <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+          <a class="btn btn-line" href="#obras">Ver obras</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <div class="wrap mono">
+        <div>Atuação<b>Pernambuco e Bahia</b></div>
+        <div>Segmentos<b>Residencial e comercial</b></div>
+        <div>Responsável técnico<b>Eng. civil João Melo</b></div>
+        <div>Base<b>Recife · PE</b></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SOBRE -->
+<section class="about sec" id="sobre">
+  <div class="wrap">
+    <div class="about-grid">
+      <p class="statement" data-up>Toda obra começa com um sonho e termina com uma entrega. <em>Entre um e outro existe engenharia.</em></p>
+      <div class="about-side" data-up>
+        <p>A Farias de Melo Engenharia constrói, reforma e amplia imóveis residenciais e comerciais. Da primeira casa de uma família à loja de uma rede nacional de farmácias.</p>
+        <p>Cálculo, planejamento, equipe própria e um responsável técnico que responde por cada etapa. É isso que entra em cada canteiro.</p>
+      </div>
+    </div>
+    <figure class="about-media" data-reveal-img>
+      <img src="img/plantas.jpg" alt="Pranchas de projeto fixadas na parede de uma obra" data-par>
+      <figcaption>Projeto executivo no canteiro: a obra segue o que foi calculado.</figcaption>
+    </figure>
+
+    <div class="aud-grid">
+      <div class="aud" data-up><span class="line"></span><h3>Famílias que vão construir ou reformar</h3><p>Casas e apartamentos, da fundação ao acabamento, com orçamento previsível e acompanhamento do início ao fim.</p></div>
+      <div class="aud" data-up><span class="line"></span><h3>Empresas e redes de varejo</h3><p>Reformas e ampliações de lojas, com cronograma pensado para cumprir o padrão da marca e a operação seguir funcionando.</p></div>
+      <div class="aud" data-up><span class="line"></span><h3>Quem acabou de comprar um imóvel</h3><p>Avaliação técnica antes de mexer em paredes, pisos e instalações, para adaptar o imóvel sem surpresas no meio do caminho.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="sec" id="servicos">
+  <div class="wrap">
+    <div class="svc-top">
+      <h2 data-up>Engenharia completa, do projeto à entrega.</h2>
+      <p class="muted" data-up>Um único contrato para resolver a obra inteira. Você fala com quem decide, e quem decide está no canteiro.</p>
+    </div>
+    <div class="svc-list" id="svcList">
+      <div class="svc" data-img="0"><h3>Construção residencial</h3><p>Fundação, estrutura em concreto armado, lajes, alvenaria e acabamento.</p></div>
+      <div class="svc" data-img="1"><h3>Reformas residenciais</h3><p>Banheiros, cozinhas, áreas molhadas e reformas completas de casas e apartamentos.</p></div>
+      <div class="svc" data-img="2"><h3>Reformas e ampliações comerciais</h3><p>Lojas, farmácias e pontos comerciais, inclusive redes com padrão de marca a cumprir.</p></div>
+      <div class="svc" data-img="3"><h3>Estrutura e ampliações</h3><p>Novos pavimentos, pilares, vigas e lajes com a solução técnica adequada a cada projeto.</p></div>
+      <div class="svc" data-img="1"><h3>Demolição e readequação</h3><p>Demolições controladas, hidráulica, elétrica, pisos e revestimentos.</p></div>
+      <div class="svc" data-img="4"><h3>Serviços de engenharia</h3><p>Visitas técnicas, laudos, orçamentos detalhados e responsabilidade técnica pela obra.</p></div>
+    </div>
+  </div>
+  <div class="peek" id="peek" aria-hidden="true">
+    <img src="img/obra-estrutura.jpg" alt=""><img src="img/obra-execucao.jpg" alt=""><img src="img/obra-drogasil.jpg" alt=""><img src="img/hero-ferragem.jpg" alt=""><img src="img/plantas.jpg" alt="">
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="method" id="metodo">
+  <div class="wrap method-top">
+    <h2 data-up>Obra boa não é sorte. É processo.</h2>
+    <p class="muted" data-up style="color:var(--ml)">Cinco etapas que transformam uma ideia em imóvel entregue, sem improviso e sem conta surpresa no final.</p>
+  </div>
+  <div class="method-pin">
+    <div class="track">
+      <article class="step"><div class="n">01</div><h3>Visita técnica</h3><p>O engenheiro vai até o imóvel, entende o que você quer e avalia o que existe: estrutura, instalações e limitações.</p></article>
+      <article class="step"><div class="n">02</div><h3>Projeto e orçamento</h3><p>Solução técnica definida e orçamento detalhado por etapa. Você sabe o que vai pagar antes do primeiro tijolo.</p></article>
+      <article class="step photo"><img src="img/joao-equipe.jpg" alt="Engenheiro João Melo alinhando o projeto com a equipe no canteiro"></article>
+      <article class="step"><div class="n">03</div><h3>Planejamento</h3><p>Cronograma, compra de materiais e sequência de serviços organizados para a obra não parar.</p></article>
+      <article class="step"><div class="n">04</div><h3>Execução acompanhada</h3><p>Equipe própria, treinada e com EPI, sob acompanhamento direto do engenheiro responsável.</p></article>
+      <article class="step"><div class="n">05</div><h3>Entrega</h3><p>Vistoria final com você, ajustes concluídos e o imóvel pronto para morar ou abrir as portas.</p></article>
+    </div>
+    <div class="progress"><i></i></div>
+  </div>
+</section>
+
+<!-- OBRAS -->
+<section id="obras" style="background:var(--ink)">
+  <div class="wrap" style="padding-top:clamp(100px,13vw,190px)">
+    <div class="works-top">
+      <h2 data-up>Canteiros que viraram entrega.</h2>
+      <p class="muted" data-up>Obras residenciais e comerciais executadas pela equipe Farias de Melo, em Pernambuco e fora do estado.</p>
+    </div>
+  </div>
+  <div class="feature">
+    <div class="feature-sticky">
+      <div class="feature-frame"><img src="img/obra-drogasil.jpg" alt="Fachada de loja Drogasil reformada pela Farias de Melo"></div>
+      <div class="feature-info">
+        <div class="wrap">
+          <div><span class="mono tags">Comercial · Varejo farmacêutico</span><h3>Reforma de loja Drogasil</h3></div>
+          <p>Retoque completo da fachada, manutenção das partes da construção desgastadas pelo tempo e nova sinalização do estacionamento. A empresa também executou reforma e ampliação de unidade da rede em Itabuna, no sul da Bahia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-bottom:clamp(100px,13vw,190px)">
+    <div class="pair">
+      <figure>
+        <div class="pic" data-reveal-img><img src="img/obra-estrutura.jpg" alt="Estrutura de concreto armado em execução" data-par></div>
+        <figcaption><span class="mono">Residencial · Estrutura</span><h4>Ampliação em concreto armado</h4><p>Pilares, vigas e laje executados com acompanhamento técnico em cada etapa crítica.</p></figcaption>
+      </figure>
+      <figure>
+        <div class="pic" data-reveal-img><img src="img/obra-execucao.jpg" alt="Equipe da Farias de Melo executando demolição de piso" data-par style="object-position:40% 50%"></div>
+        <figcaption><span class="mono">Reforma · Execução</span><h4>Demolição e readequação de piso</h4><p>Equipe uniformizada e com EPI, trabalhando conforme o projeto aprovado.</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ENGENHEIRO -->
+<section class="light sec" id="engenheiro">
+  <div class="wrap">
+    <div class="eng">
+      <div class="portrait" data-reveal-img>
+        <img src="img/joao.jpg" alt="Engenheiro civil João Melo analisando o projeto na obra" data-par>
+        <div class="badge mono">Responsável técnico<b>CREA-PE nº a confirmar</b></div>
+      </div>
+      <div>
+        <h2 data-up>João Melo</h2>
+        <p class="lead" data-up>Engenheiro civil e responsável técnico da Farias de Melo Engenharia. Para ele, obra se resolve no canteiro, com presença, e não por telefone.</p>
+        <p class="body" data-up>É ele quem faz a visita técnica, aprova a solução, acompanha a execução e entrega a obra. Conduz desde reformas residenciais em Recife até obras comerciais para redes de varejo em outros estados, com o mesmo padrão de exigência. Corredor de longa distância, leva para o canteiro a disciplina de quem treina do 5 km à maratona: constância, planejamento e nenhuma etapa pulada.</p>
+        <div class="creds mono" data-up>
+          <div>Formação<b>Engenharia Civil</b></div>
+          <div>Função<b>Responsável técnico</b></div>
+          <div>Base<b>Recife · PE</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team">
+      <div class="pic" data-reveal-img><img src="img/equipe.jpg" alt="Equipe da Farias de Melo com certificados de treinamento" data-par></div>
+      <div data-up>
+        <h3>Equipe própria, treinada e certificada.</h3>
+        <p>Os profissionais da Farias de Melo passam por capacitação antes de entrar na obra. Quem executa sabe o porquê de cada etapa, e isso aparece no acabamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCÍPIOS -->
+<section class="sec">
+  <div class="wrap">
+    <h2 data-up style="max-width:15ch">O que você recebe além da obra pronta.</h2>
+    <div class="prin-grid">
+      <div class="prin" data-up><h3>Engenheiro presente</h3><p>O responsável técnico acompanha a obra de perto, e não apenas assina o projeto.</p></div>
+      <div class="prin" data-up><h3>Equipe própria e treinada</h3><p>Profissionais capacitados, uniformizados e trabalhando com equipamento de proteção.</p></div>
+      <div class="prin" data-up><h3>Orçamento sem surpresa</h3><p>Escopo e custos detalhados por etapa antes de começar. O combinado é o executado.</p></div>
+      <div class="prin" data-up><h3>A solução certa, não a mais fácil</h3><p>Cada técnica é escolhida pelo que o projeto exige e explicada para você decidir com segurança.</p></div>
+    </div>
+    <p class="quote" id="quote"><span class="ln"><span>Às vezes o barato</span></span><span class="ln"><span>sai caro. <span class="ox">Escolha</span></span></span><span class="ln"><span><span class="ox">a qualidade.</span></span></span></p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contato">
+  <div class="cta-bg"><img src="img/hero-ferragem.jpg" alt=""></div>
+  <div class="wrap">
+    <h2 data-up>Vamos tirar o seu projeto do papel?</h2>
+    <div class="cta-row">
+      <p data-up>Conte o que você quer construir ou reformar. O engenheiro João Melo responde pessoalmente e agenda a visita técnica.</p>
+      <div data-up>
+        <a class="btn btn-w" href="https://wa.me/5581988152587" target="_blank" rel="noopener">Chamar no WhatsApp <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <span class="tel mono">(81) 98815-2587 · Recife, PE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="#topo" class="brand"><svg viewBox="0 0 140 100"><use href="#fm"/></svg><span><b style="color:var(--concrete)">FARIAS DE MELO</b><small>ENGENHARIA</small></span></a>
+      <p style="margin-top:20px;max-width:320px">Construímos e reformamos o seu sonho, com engenharia de verdade.</p>
+    </div>
+    <div><h4>Navegação</h4><p><a href="#sobre">Sobre</a><br><a href="#servicos">Serviços</a><br><a href="#metodo">Método</a><br><a href="#obras">Obras</a></p></div>
+    <div><h4>Contato</h4><p><a href="https://wa.me/5581988152587" target="_blank" rel="noopener">(81) 98815-2587</a><br>Recife · PE</p></div>
+    <div><h4>Instagram</h4><p><a href="https://www.instagram.com/fariasdemeloeng/" target="_blank" rel="noopener">@fariasdemeloeng</a><br><a href="https://www.instagram.com/joaomeloeng/" target="_blank" rel="noopener">@joaomeloeng</a></p></div>
+    <div class="legal mono"><span>© 2026 Farias de Melo Engenharia</span><span>Responsável técnico: Eng. civil João Melo · CREA-PE nº a confirmar</span></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>window.innerHeight*.85)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // Services: image follows cursor
+  var list=document.getElementById('svcList'),peek=document.getElementById('peek'),imgs=peek.querySelectorAll('img');
+  var px=0,py=0,cx=0,cy=0,raf;
+  function loop(){cx+=(px-cx)*.14;cy+=(py-cy)*.14;peek.style.left=cx+'px';peek.style.top=cy+'px';raf=requestAnimationFrame(loop)}
+  list.addEventListener('mouseenter',function(e){px=cx=e.clientX;py=cy=e.clientY;peek.classList.add('on');loop()});
+  list.addEventListener('mouseleave',function(){peek.classList.remove('on');cancelAnimationFrame(raf)});
+  list.addEventListener('mousemove',function(e){px=e.clientX+170;py=e.clientY});
+  list.querySelectorAll('.svc').forEach(function(s){s.addEventListener('mouseenter',function(){var i=+s.dataset.img;imgs.forEach(function(im,k){im.classList.toggle('on',k===i)})})});
+
+  if(!window.gsap||!window.ScrollTrigger||window.matchMedia('(prefers-reduced-motion: reduce)').matches){var f=document.querySelector('.feature-frame');f.style.clipPath='none';f.querySelector('img').style.transform='none';document.querySelector('.hero-media img').style.transform='none';return}
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  gsap.registerPlugin(ScrollTrigger);
+
+  if(window.Lenis){try{
+    var lenis=new Lenis({duration:1.15,smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(function(t){lenis.raf(t*1000)});gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var id=a.getAttribute('href');if(id.length>1&&document.querySelector(id)){e.preventDefault();lenis.scrollTo(id,{offset:-60})}})});
+  }catch(e){}}
+
+  var E='power3.out';
+  // Hero intro
+  var tl=gsap.timeline({delay:.1});
+  tl.to('.hero-media img',{scale:1,duration:2.4,ease:'power2.out'},0)
+    .from('.hero h1 .ln > span',{yPercent:112,duration:1.25,ease:'power4.out',stagger:.09},.25)
+    .from(['.hero-row > *','.hero-meta .wrap > *'],{y:22,opacity:0,duration:1,ease:E,stagger:.07},.8);
+  // Hero recedes while "Sobre" slides over it
+  gsap.to('.hero-dim',{opacity:.75,ease:'none',scrollTrigger:{trigger:'.hero-shell',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-content',{yPercent:-18,ease:'none',scrollTrigger:{trigger:'.hero-shell',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-media',{scale:.94,ease:'none',scrollTrigger:{trigger:'.hero-shell',start:'top top',end:'bottom top',scrub:true}});
+
+  // Fade-up
+  gsap.utils.toArray('[data-up]').forEach(function(el){
+    gsap.from(el,{y:40,opacity:0,duration:1.1,ease:E,scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  // Audience lines draw
+  gsap.utils.toArray('.aud .line').forEach(function(l,i){
+    gsap.to(l,{width:'100%',duration:1.2,ease:'power2.inOut',delay:i*.12,scrollTrigger:{trigger:l,start:'top 85%'}});
+  });
+  // Image reveals: un-clip + parallax
+  gsap.utils.toArray('[data-reveal-img]').forEach(function(el){
+    gsap.fromTo(el,{clipPath:'inset(16% 8% 16% 8%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'none',scrollTrigger:{trigger:el,start:'top 95%',end:'top 40%',scrub:true}});
+    var p=el.querySelector('[data-par]');
+    if(p)gsap.fromTo(p,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}});
+  });
+
+  var mm=gsap.matchMedia();
+  mm.add('(min-width:1024px)',function(){
+    // Method: horizontal pinned
+    var track=document.querySelector('.track');
+    var dist=function(){return track.scrollWidth-window.innerWidth};
+    gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:'.method-pin',pin:true,start:'center center',end:function(){return '+='+dist()},scrub:1,invalidateOnRefresh:true,
+      onUpdate:function(s){gsap.set('.progress i',{width:(s.progress*100)+'%'})}}});
+    // Feature work: frame expands to full-bleed
+    gsap.timeline({scrollTrigger:{trigger:'.feature',start:'top top',end:'bottom bottom',scrub:true}})
+      .to('.feature-frame',{clipPath:'inset(0% 0% 0% 0%)',ease:'none'},0)
+      .to('.feature-frame img',{scale:1,ease:'none'},0);
+    gsap.from('.feature-info .wrap > *',{y:40,opacity:0,stagger:.1,duration:1,ease:E,scrollTrigger:{trigger:'.feature',start:'top top+=10%'}});
+  });
+  mm.add('(max-width:1023px)',function(){
+    gsap.set('.feature-frame',{clipPath:'inset(0% 0% 0% 0%)'});gsap.set('.feature-frame img',{scale:1});
+  });
+
+  // Quote lines
+  gsap.from('#quote .ln > span',{yPercent:110,duration:1.2,ease:'power4.out',stagger:.1,scrollTrigger:{trigger:'#quote',start:'top 80%'}});
+
+  window.addEventListener('load',function(){ScrollTrigger.refresh()});
+})();
+</script>
+</body>
+</html>
